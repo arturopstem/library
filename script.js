@@ -4,9 +4,9 @@ const addNewBook = document.querySelector('.addNewBook');
 const library = document.querySelector('.library');
 const modal = document.querySelector('.modal');
 const form = document.querySelector('.form');
-const formCancelButton = document.querySelector('.form-cancel');
-const formConfirmButton = document.querySelector('.form-confirm');
-const formAutoFillButton = document.querySelector('.form-random');
+const formButtonCancel = document.querySelector('.form-button-cancel');
+const formButtonConfirm = document.querySelector('.form-button-confirm');
+const formButtonAutoFill = document.querySelector('.form-button-autofill');
 
 const bookStore = [
   {
@@ -232,13 +232,6 @@ function autoFill() {
 }
 // -----------------------------
 
-function getNewBook() {
-  const randomBook = getRandomBook();
-  const bookCard = createBookCard(randomBook);
-  addBookToLibrary(randomBook);
-  library.appendChild(bookCard);
-}
-
 library.addEventListener('click', (e) => {
   const { nodeName } = e.target;
   if (nodeName === 'BUTTON') {
@@ -262,17 +255,30 @@ function closeOnBackdropClick(e) {
   }
 }
 
+function register() {
+  const newBook = {};
+  newBook.title = form.elements.title.value;
+  newBook.author = form.elements.author.value;
+  newBook.pages = form.elements.pages.valueAsNumber;
+  newBook.read = form.elements.read.checked;
+  newBook.isbn = Book.newISBN();
+
+  const newBookCard = createBookCard(newBook);
+  addBookToLibrary(newBook);
+  library.appendChild(newBookCard);
+}
+
 addNewBook.addEventListener('click', () => modal.showModal());
 
 modal.addEventListener('close', () => form.reset());
 modal.addEventListener('click', closeOnBackdropClick);
 
-formAutoFillButton.addEventListener('click', autoFill);
-formCancelButton.addEventListener('click', () => modal.close());
-formConfirmButton.addEventListener('click', () => {
+formButtonAutoFill.addEventListener('click', autoFill);
+formButtonCancel.addEventListener('click', () => modal.close());
+formButtonConfirm.addEventListener('click', () => {
   if (form.reportValidity() === false) {
     return;
   }
-  console.log('Adding Book');
+  register();
   modal.close();
 });

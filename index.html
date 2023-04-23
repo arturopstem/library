@@ -11,8 +11,8 @@
   <body>
     <dialog class="modal">
       <form class="form">
-        <p>New Book</p>
-        <div>
+        <p class="form-legend">New Book</p>
+        <div class="form-controls">
           <div class="input-title">
             <label for="title">Title</label>
             <input
@@ -48,23 +48,25 @@
             <label for="read">Have you read it?</label>
             <input type="checkbox" name="read" id="read" />
           </div>
-          <menu>
-            <li>
-              <button class="form-random" type="button">AUTO FILL</button>
-            </li>
-            <li>
-              <button class="form-cancel" type="button">CANCEL</button>
-            </li>
-            <li>
-              <button class="form-confirm" type="button">REGISTER</button>
-            </li>
-          </menu>
         </div>
+        <menu class="form-menu-buttons">
+          <li>
+            <button class="form-button-autofill" type="button">
+              AUTO FILL
+            </button>
+          </li>
+          <li>
+            <button class="form-button-cancel" type="button">CANCEL</button>
+          </li>
+          <li>
+            <button class="form-button-confirm" type="button">REGISTER</button>
+          </li>
+        </menu>
       </form>
     </dialog>
     <header class="header">
       <h1 class="project-title">Library</h1>
-      <menu class="menu">
+      <menu class="buttons menu">
         <li>
           <button class="addNewBook">Add New Book</button>
         </li>
