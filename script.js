@@ -2,6 +2,11 @@
 /* eslint-disable no-script-url */
 const addNewBook = document.querySelector('.addNewBook');
 const library = document.querySelector('.library');
+const modal = document.querySelector('.modal');
+const form = document.querySelector('.form');
+const formCancelButton = document.querySelector('.form-cancel');
+const formConfirmButton = document.querySelector('.form-confirm');
+const formAutoFillButton = document.querySelector('.form-random');
 
 const bookStore = [
   {
@@ -205,18 +210,27 @@ function createBookCard(book) {
   return bookCard;
 }
 
+//  ___Auto fill functionality___
 function getRandomBook() {
-  if (bookStore.length === 0) {
-    this.location.reload();
-  }
   const randomIndex = Math.floor(Math.random() * bookStore.length);
-  const randomBook = bookStore.splice(randomIndex, 1)[0];
-  const isbn = Book.newISBN();
+  const randomBook = { ...bookStore[randomIndex] };
   const read = Math.floor(Math.random() * 2);
-  randomBook.isbn = isbn;
   randomBook.read = Boolean(read);
   return randomBook;
 }
+
+function fillInForm(randomBook) {
+  form.elements.title.value = randomBook.title;
+  form.elements.author.value = randomBook.author;
+  form.elements.pages.value = randomBook.pages;
+  form.elements.read.checked = randomBook.read;
+}
+
+function autoFill() {
+  const randomBook = getRandomBook();
+  fillInForm(randomBook);
+}
+// -----------------------------
 
 function getNewBook() {
   const randomBook = getRandomBook();
@@ -225,7 +239,6 @@ function getNewBook() {
   library.appendChild(bookCard);
 }
 
-addNewBook.addEventListener('click', getNewBook);
 library.addEventListener('click', (e) => {
   const { nodeName } = e.target;
   if (nodeName === 'BUTTON') {
@@ -241,4 +254,25 @@ library.addEventListener('change', (e) => {
     const { isbn } = e.target.parentNode.parentNode.dataset;
     updateBookReadState(Number(isbn));
   }
+});
+
+function closeOnBackdropClick(e) {
+  if (e.target.nodeName === 'DIALOG') {
+    modal.close();
+  }
+}
+
+addNewBook.addEventListener('click', () => modal.showModal());
+
+modal.addEventListener('close', () => form.reset());
+modal.addEventListener('click', closeOnBackdropClick);
+
+formAutoFillButton.addEventListener('click', autoFill);
+formCancelButton.addEventListener('click', () => modal.close());
+formConfirmButton.addEventListener('click', () => {
+  if (form.reportValidity() === false) {
+    return;
+  }
+  console.log('Adding Book');
+  modal.close();
 });
