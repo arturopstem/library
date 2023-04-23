@@ -151,7 +151,12 @@ menu {
 /* ___Footer___ */
 .footer {
   background-color: #16007a;
-  text-align: center;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 /* ___Scrollbar___ */
