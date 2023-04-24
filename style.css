@@ -242,13 +242,57 @@ menu {
   gap: 1rem;
 }
 
+/* ___Form Buttons___ */
 .form-menu-buttons {
   display: flex;
   gap: 1rem;
+  align-items: center;
+}
+
+.form-menu-buttons li:last-of-type {
+  margin-left: auto;
 }
 
 [class|="form-button"] {
-  width: max-content;
-  height: 2rem;
+  appearance: none;
+  border: none;
   cursor: pointer;
+}
+
+.form-button-autofill {
+  --bg-color: hsl(200, 100%, 50%);
+  background-color: var(--bg-color);
+  font-weight: bold;
+  border-radius: 1rem;
+  padding: 1rem 0.5rem;
+
+  transition: all 1s;
+}
+
+.form-button-autofill:hover:not(:active) {
+  --bg-color: hsl(270, 100%, 50%);
+  box-shadow: 0.25rem 0.25rem #000;
+}
+
+.form-button-cancel {
+  background-color: hsl(0, 100%, 50%);
+  background-image: url(images/close-circle-outline.svg);
+  width: 3rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  transition: all 1s;
+}
+
+.form-button-confirm {
+  background-color: hsl(120, 100%, 50%);
+  background-image: url(images/check-circle-outline.svg);
+  width: 4rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  transition: all 1s;
+}
+
+:is(.form-button-confirm, .form-button-cancel):hover {
+  rotate: -360deg;
+  scale: 1.1;
 }
