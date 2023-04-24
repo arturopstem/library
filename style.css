@@ -342,7 +342,7 @@ menu {
 
   transition: all 1s;
 }
-
+.form-button-autofill:focus:not(:active),
 .form-button-autofill:hover:not(:active) {
   --bg-color: hsl(270, 100%, 50%);
   box-shadow: 0.25rem 0.25rem #000;
@@ -365,7 +365,7 @@ menu {
   border-radius: 50%;
   transition: all 1s;
 }
-
+:is(.form-button-confirm, .form-button-cancel):focus,
 :is(.form-button-confirm, .form-button-cancel):hover {
   rotate: -360deg;
   scale: 1.1;
