@@ -217,7 +217,8 @@ menu {
 }
 
 .modal::backdrop {
-  background-color: hsla(0, 100%, 50%, 0.5);
+  background-color: hsla(210, 100%, 50%, 0.5);
+  backdrop-filter: blur(2px);
 }
 
 /* ___Form___ */
