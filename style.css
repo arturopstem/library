@@ -47,6 +47,7 @@ menu {
   display: flex;
   align-items: center;
   transition: all 0.5s;
+  cursor: pointer;
 }
 
 .addNewBook:hover {
