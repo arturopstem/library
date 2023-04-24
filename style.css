@@ -224,7 +224,7 @@ menu {
 /* ___Form___ */
 .form {
   background-color: darkblue;
-  padding: 2rem;
+  padding: 0.5rem 1.5rem;
   border: 0.5rem solid green;
   border-radius: 2rem;
   display: flex;
