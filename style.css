@@ -20,20 +20,60 @@ body {
 }
 
 .header {
+  padding: 0.5rem;
   background-color: #564592;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 menu {
   list-style-type: none;
 }
 
+/* ___Add New Book Button___ */
 .addNewBook {
+  --bg-color: hsl(120, 100%, 50%);
+  appearance: none;
+  background-color: var(--bg-color);
+  color: #000;
+  border: none;
+  border-radius: 1rem;
   font-size: 1rem;
   font-weight: bold;
   padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s;
 }
 
+.addNewBook:hover {
+  --bg-color: hsl(120, 100%, 75%);
+  scale: 1.05;
+}
+
+.addNewBook:active {
+  --bg-color: hsl(120, 100%, 50%);
+  scale: 1;
+}
+
+.addNewBook::before {
+  content: url(images/book-plus.svg);
+  height: 2rem;
+  aspect-ratio: 1/1;
+}
+
+.addNewBook:hover::before {
+  content: url(images/book-plus-outline.svg);
+}
+
+.addNewBook:active::before {
+  content: url(images/book-plus.svg);
+}
+
+/* ___Main Content___ */
 .main {
   background-color: #8338ec;
   display: grid;
