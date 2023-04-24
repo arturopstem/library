@@ -14,28 +14,28 @@
         <p class="form-legend">New Book</p>
         <div class="form-controls">
           <div class="input-title">
-            <label for="title">Title</label>
-            <input
-              type="text"
+            <textarea
+              class="text-input"
               placeholder=" "
               name="title"
               id="title"
               required
-            />
+            ></textarea>
+            <label for="title" class="floating-label">Title</label>
           </div>
           <div class="input-author">
-            <label for="author">Author</label>
-            <input
-              type="text"
+            <textarea
+              class="text-input"
               placeholder=" "
               name="author"
               id="author"
               required
-            />
+            ></textarea>
+            <label for="author" class="floating-label">Author</label>
           </div>
           <div class="input-pages">
-            <label for="pages">Pages</label>
             <input
+              class="text-input"
               type="number"
               placeholder=" "
               name="pages"
@@ -43,10 +43,16 @@
               min="1"
               required
             />
+            <label for="pages" class="floating-label">Pages</label>
           </div>
           <div class="input-read">
             <label for="read">Have you read it?</label>
-            <input type="checkbox" name="read" id="read" />
+            <input
+              class="checkbox-input"
+              type="checkbox"
+              name="read"
+              id="read"
+            />
           </div>
         </div>
         <menu class="form-menu-buttons">

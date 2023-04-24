@@ -243,6 +243,79 @@ menu {
   gap: 1rem;
 }
 
+.input-title,
+.input-author,
+.input-pages {
+  margin-top: 1.5rem;
+  position: relative;
+  display: grid;
+  grid-auto-rows: fit-content;
+}
+
+.floating-label {
+  position: absolute;
+  translate: 0 -1.25rem;
+  transition: 0.25s;
+  font-weight: bold;
+  pointer-events: none;
+  color: hsl(120, 100%, 50%);
+}
+
+.floating-label::after {
+  content: " :";
+}
+
+.text-input {
+  padding: 0.5rem;
+  appearance: none;
+  border: none;
+  border-radius: 0.5rem;
+  caret-color: red;
+  background-color: hsl(220, 100%, 50%);
+}
+
+.text-input:placeholder-shown + .floating-label {
+  translate: 0.75rem 0.5rem;
+  color: hsl(200, 100%, 50%);
+}
+
+.text-input:placeholder-shown + .floating-label::after {
+  content: "";
+}
+
+.text-input:focus + .floating-label {
+  translate: 0 -1.25rem;
+  color: hsl(120, 100%, 50%);
+}
+.text-input:focus + .floating-label::after {
+  content: " :";
+}
+
+.form-controls textarea {
+  resize: none;
+}
+
+.input-read {
+  color: hsl(120, 100%, 50%);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkbox-input {
+  appearance: none;
+  background-image: url(images/checkbox-blank-outline.svg);
+  width: 2rem;
+  aspect-ratio: 1/1;
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.checkbox-input:checked {
+  background-image: url(images/checkbox-marked-outline.svg);
+}
+
 /* ___Form Buttons___ */
 .form-menu-buttons {
   display: flex;
