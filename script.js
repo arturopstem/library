@@ -103,30 +103,32 @@ const bookStore = [
 
 const myLibrary = [];
 
-function Book(title, author, pages, read, isbn) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.isbn = isbn;
+class Book {
+  constructor(title, author, pages, read, isbn) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.isbn = isbn;
+  }
+
+  remove() {
+    const bookIndex = myLibrary.indexOf(this);
+    myLibrary.splice(bookIndex, 1);
+  }
+
+  toggleRead() {
+    this.read = !this.read;
+    return this;
+  }
+
+  static newISBN() {
+    const min = 10 ** 12;
+    const max = 10 ** 13 - 1;
+    const isbn = Math.floor(Math.random() * (max - min + 1)) + min;
+    return isbn;
+  }
 }
-
-Book.prototype.remove = function remove() {
-  const bookIndex = myLibrary.indexOf(this);
-  myLibrary.splice(bookIndex, 1);
-};
-
-Book.prototype.toggleRead = function toggleRead() {
-  this.read = !this.read;
-  return this;
-};
-
-Book.newISBN = function newISBN() {
-  const min = 10 ** 12;
-  const max = 10 ** 13 - 1;
-  const isbn = Math.floor(Math.random() * (max - min + 1)) + min;
-  return isbn;
-};
 
 function addBookToLibrary(book) {
   const newBook = new Book(
