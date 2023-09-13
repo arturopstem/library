@@ -278,9 +278,11 @@ modal.addEventListener('click', closeOnBackdropClick);
 formButtonAutoFill.addEventListener('click', autoFill);
 formButtonCancel.addEventListener('click', () => modal.close());
 formButtonConfirm.addEventListener('click', () => {
-  if (form.reportValidity() === false) {
-    return;
+  const { title, author } = form.elements;
+  title.value = title.value.trim();
+  author.value = author.value.trim();
+  if (form.reportValidity()) {
+    register();
+    modal.close();
   }
-  register();
-  modal.close();
 });
